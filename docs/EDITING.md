@@ -43,3 +43,10 @@
 ## First-release caveat
 
 The match CSV is not yet displayed on the site. The Seasons page shows aggregated seasonal statistics, not individual match scores.
+
+
+## Photo gallery: people pictured
+
+Edit `data/photos.csv` in Excel or Google Sheets. The `names` column contains the names shown under each photo and in the full-size viewer. Separate names with semicolons (for example: `Back row: Alex; Sam; Jordan. Front row: Pat; Chris`). For commas inside a cell, export as standard CSV with the cell quoted. Leave the field empty until identities are confirmed.
+
+The `filename` column refers to a file inside `assets/photos/`. Photograph dates are provisional until verified.
