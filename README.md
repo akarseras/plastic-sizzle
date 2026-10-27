@@ -1,4 +1,4 @@
-# Plastic Sizzle — free club history website
+# Plastic Sizzle — club history website
 
 A complete, responsive, static GitHub Pages starter website for Plastic Sizzle (founded 1998). Colours: dark red, black, white, with a heritage-inspired gold accent.
 
