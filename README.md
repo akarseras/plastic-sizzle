@@ -39,3 +39,11 @@ See [docs/EDITING.md](docs/EDITING.md). Edit the CSV files in `data/` using Exce
 - The site is entirely static and has no login, private database, or in-browser editing. Public GitHub Pages content is publicly accessible.
 - GitHub Pages has usage limits and is intended for static sites. Avoid storing huge original image archives in the repository; resize/compress photos before upload.
 - This starter uses no third-party scripts, analytics, fonts, or paid services.
+
+## Official club badge
+The header displays `assets/plastic-sizzle-badge.png`, supplied by the club. To replace it, overwrite that file with another PNG of the same name.
+
+
+## Version 3: official photo archive and homepage
+
+The homepage prominently features the official club badge and the 14 December 2003 team photo. Both user-supplied photos are in `assets/photos/` and listed in `data/photos.csv`. The homepage timeline draws from `data/timeline.csv`. The year 1998 is the confirmed founding year supplied by the club; 2003 and 2018 dates derive from photo filenames. Please verify dates, venues and names before adding captions. Other demonstration records remain explicitly fictional.
