@@ -1,5 +1,5 @@
 /* Static archive: edit CSV files in /data, not this file. */
-const files=['players','matches','timeline','photos','memories'];
+const files=['players','matches','timeline','photos','memories','past-standings'];
 const state={data:{},view:'home',query:''};
 const app=document.getElementById('app');
 function escapeHTML(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -17,7 +17,38 @@ function memories(){return section('Stories & memories','Personal recollections 
 function stadia(){const venues=[{"title":"The Oz Dome","filename":"oz-dome.png","text":"Where it all started.","mapQuery":"OZ Dome, 221 Westbrook Road, Ottawa, Ontario"},{"title":"Lansdowne","filename":"lansdowne.png","text":"We played in both the dome and the old brick building.","mapQuery":"Lansdowne Park, 1015 Bank Street, Ottawa, Ontario"},{"title":"The RA Centre","filename":"ra-centre.jpg","text":"Still being used by Sizzle.","mapQuery":"RA Centre, 2451 Riverside Drive, Ottawa, Ontario"},{"title":"Ottawa University (Lees Avenue Campus)","filename":"lees-campus.jpg","text":"Still being used by Sizzle.","mapQuery":"University of Ottawa Lees Campus, 200 Lees Avenue, Ottawa, Ontario"},{"title":"Immaculata","filename":"immaculata.png","text":"Sizzle has also played at Immaculata.","mapQuery":"Immaculata High School, Ottawa, Ontario"}];return section('Stadia','Sizzle has played at several locations in Ottawa throughout the years.')+`<div class="grid">${venues.map(v=>`<article class="card photo-card"><div class="photo" style="padding:0"><img src="${e(photoPath(v.filename))}" alt="${e(v.title)}" loading="lazy"></div><div class="details"><h3>${e(v.title)}</h3><p>${e(v.text)}</p><a href="${e('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(v.mapQuery))}" target="_blank" rel="noopener noreferrer" aria-label="View ${e(v.title)} on Google Maps (opens in a new tab)">View on Google Maps ↗</a></div></article>`).join('')}</div>`;}
 function postMatch(){const pubs=[{"title":"The Clocktower","filename":"clocktower.png","closed":true},{"title":"The Barley Mow","filename":"barley-mow.jpg","closed":true},{"title":"The Glebe Central Pub","filename":"glebe-central-pub.jpg","closed":false},{"title":"The Royal Oak","filename":"royal-oak.jpg","closed":true},{"title":"Patty’s Pub","filename":"pattys-pub.jpg","closed":false}];return section('Post-Match','The pubs Sizzle has visited after games throughout the years.  With discussions not limited to tactics, players have talked long into the night making early Monday morning starts a tad difficult.')+`<div class="grid">${pubs.map(pub=>`<article class="card photo-card"><div class="photo" style="padding:0"><img src="${e(photoPath(pub.filename))}" alt="${e(pub.title)}" loading="lazy"></div><div class="details"><h3>${e(pub.title)}</h3>${pub.closed?'<p>Now closed.</p>':''}</div></article>`).join('')}</div>`;}
 function honours(){const images=[{"title":"March 2019 - Trevor wins the Golden Boot","filename":"honours-2019-03.png"},{"title":"March 2020 - Champions and Trevor does it again","filename":"honours-2020-03.png"}];return section('Honours',"As a club, we have won many games, lost probably a few more.. Many successes have been forgotten but the Ottawa Footy Sevens website has archived a few memorable times")+images.map((photo,index)=>`<figure class="card" style="${index===images.length-1?'max-width:600px;margin:24px auto':'margin:24px 0'}"><img src="${e(photoPath(photo.filename))}" alt="Plastic Sizzle honours — ${e(photo.title)}" loading="lazy" style="display:block;width:100%;height:auto"><figcaption style="margin-top:16px"><h3>${e(photo.title)}</h3></figcaption></figure>`).join('');}
-const routes={home,history,players,gallery,memories,stadia,'post-match':postMatch,honours};
+
+function standingsShirt(shirt,id){
+  const match=String(shirt||'').match(/^(full|vertical-stripes|horizontal-hoops|half-and-half-horizontal)\/([a-z]+|#[0-9a-f]{6})\/([a-z]+|#[0-9a-f]{6})$/i);
+  if(!match)return '';
+  const [,pattern,primary,secondary]=match;
+  let defs='',fill=e(primary);
+  if(pattern==='vertical-stripes'||pattern==='horizontal-hoops'){
+    const stripes=pattern==='vertical-stripes'?'<rect width="3" height="8" fill="'+e(secondary)+'"/>':'<rect width="8" height="4" fill="'+e(secondary)+'"/>';
+    defs='<defs><pattern id="'+id+'" patternUnits="userSpaceOnUse" width="8" height="8"><rect width="8" height="8" fill="'+e(primary)+'"/>'+stripes+'</pattern></defs>';
+    fill='url(#'+id+')';
+  }else if(pattern==='half-and-half-horizontal'){
+    defs='<defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="50%" stop-color="'+e(primary)+'"/><stop offset="50%" stop-color="'+e(secondary)+'"/></linearGradient></defs>';
+    fill='url(#'+id+')';
+  }
+  return '<svg class="standings-shirt" viewBox="0 0 32 34" aria-hidden="true" focusable="false">'+defs+'<path d="M10 2 6 4 1 9 5 16 9 13 9 32 23 32 23 13 27 16 31 9 26 4 22 2 19 4 13 4Z" fill="'+fill+'" stroke="#181818" stroke-width="1.2"/><path d="M12 2Q16 8 20 2" fill="none" stroke="'+e(secondary)+'" stroke-width="1.1"/></svg>';
+}
+function pastStandings(){
+  const groups=new Map();
+  all('past-standings').forEach(row=>{if(!groups.has(row.source))groups.set(row.source,[]);groups.get(row.source).push(row);});
+  const columns=[['played','GP'],['won','W'],['lost','L'],['drawn','D'],['goals_for','GF'],['goals_against','GA'],['goal_difference','+/−'],['points','Pts']];
+  const ordinal=n=>n+((n%100>=11&&n%100<=13)?'th':({1:'st',2:'nd',3:'rd'}[n%10]||'th'));
+  return section('Past Standings','The league tables behind the seasons. Explore Plastic Sizzle’s past campaigns in the Ottawa Footy Sevens archive.')
+    +'<p class="standings-context">Season labels and team order follow the original archive. These are archived table positions; playoff results may differ.</p>'
+    +'<p class="standings-key">GP: games played · W: wins · L: losses · D: draws · GF / GA: goals for / against · +/−: goal difference · Pts: points</p>'
+    +Array.from(groups.values()).map((rows,index)=>{
+      const season=rows[0],position=rows.findIndex(row=>row.team==='Plastic Sizzle')+1;
+      const source=/^https:\/\/www\.ottawafootysevens\.com\/league_tables\.seam\?divisionId=\d+$/.test(season.source)?season.source:'https://www.ottawafootysevens.com/';
+      return `<section class="past-season" aria-labelledby="past-season-${index}"><div class="standings-heading"><div><p class="eyeline">Season · ${e(season.season)}</p><h3 id="past-season-${index}">${e(season.league)}</h3></div><a class="standings-source" href="${e(source)}" target="_blank" rel="noopener noreferrer">View original table ↗</a></div><p class="standings-finish"><strong>Plastic Sizzle</strong> · ${ordinal(position)} of ${rows.length}</p><h4 class="standings-division">${e(season.division)} <span>(Historic)</span></h4><div class="standings-scroll" role="region" aria-label="${e(season.season+' '+season.division+' standings')}" tabindex="0"><table class="standings-table"><caption class="standings-sr-only">${e(season.season+' — '+season.league+' — '+season.division)}</caption><thead><tr><th scope="col" class="standings-kit"><span class="standings-sr-only">Kit</span></th><th scope="col" class="standings-team">Team</th>${columns.map(c=>`<th scope="col">${e(c[1])}</th>`).join('')}</tr></thead><tbody>${rows.map((row,i)=>`<tr${row.team==='Plastic Sizzle'?' class="standings-sizzle"':''}><td class="standings-kit">${standingsShirt(row.shirt,'kit-'+index+'-'+i)}</td><th scope="row" class="standings-team">${e(row.team)}</th>${columns.map(c=>`<td>${e(row[c[0]])}</td>`).join('')}</tr>`).join('')}</tbody></table></div></section>`;
+    }).join('');
+}
+
+const routes={home,history,players,gallery,memories,stadia,'post-match':postMatch,honours,'past-standings':pastStandings};
 function render(){const view=location.hash.slice(1).split('?')[0]||'home';if(view!==state.view)state.query='';state.view=routes[view]?view:'home';app.innerHTML=routes[state.view]();document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.dataset.view===state.view));app.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>openPhoto(Number(b.dataset.photo))));const search=document.getElementById('search');if(search){search.addEventListener('input',()=>{const pos=search.selectionStart;state.query=search.value;const container=search.parentElement.nextElementSibling;const records=all(state.view).filter(r=>Object.values(r).join(' ').toLowerCase().includes(state.query.toLowerCase()));const columns=[['name','Player'],['position','Position'],['seasons','Seasons'],['current squad','Current squad'],['notes','Notes']];container.outerHTML=table(records,columns);});}window.scrollTo(0,0);}
 async function init(){try{await Promise.all(files.map(async n=>{const res=await fetch(`data/${n}.csv`);if(!res.ok)throw new Error(n+' CSV not found');state.data[n]=csvParse(await res.text());}));document.getElementById('updated').textContent='Built for the community';render();window.addEventListener('hashchange',render);}catch(err){app.innerHTML=`<h2>Archive could not load</h2><p>${e(err.message)}</p><p>Open the website through a local web server or GitHub Pages, not directly using a file:// URL. See README.md.</p>`;}}
 init();

@@ -50,3 +50,8 @@ Edit `data/photos.csv` in Excel or Google Sheets. The `names` column contains th
 The `filename` column refers to a file inside `assets/photos/`. Photograph dates are provisional until verified.
 
 Photo filenames use lowercase letters, numbers and hyphens, with lowercase extensions (.jpg, .png or .webp). Use descriptive names for venues and pubs (e.g. oz-dome.png or pattys-pub.jpg) and team-YYYY-MM or team-YYYY-MM-DD for dated team photos. Preserve the original image format; use .jpg for JPEG files.
+
+
+## Past Standings
+
+Edit `data/past-standings.csv` to update the Past Standings page. Each row is one team in a division table. Keep the original team order within each season, and keep the same season, league, division and source URL on every row of that table. Columns are season, league, division, source, team, played, won, lost, drawn, goals_for, goals_against, goal_difference, points and shirt. The shirt value uses `pattern/primary-colour/secondary-colour` (for example, `full/firebrick/white` or `vertical-stripes/black/white`). Keep archive season labels even when they differ from the league name. Table positions do not necessarily represent playoff placings.

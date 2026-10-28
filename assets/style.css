@@ -9,3 +9,30 @@
 /* Club crest colour system: black, scarlet red and white */
 :root{--wine:#b00017;--deep:#090909;--cream:#f5f5f5;--paper:#fff;--gold:#e8e8e8;--ink:#171717;--muted:#575757;--border:#dedede}
 .masthead{background:#090909;border-top:6px solid #b00017}.topline{color:white}.topline span{color:#ef2038}.brand h1 em{color:white}.tagline{color:#e1e1e1}.eyebrow{color:#ff6374}.eyeline{color:#b00017}nav{background:#151515}nav a{color:white}nav a:hover,nav a.active{border-color:#d10020;color:white;background:#2b2b2b}.hero{background:#090909;background-image:radial-gradient(circle at 95% 0,#740010 0,transparent 44%);border-top:5px solid #b00017}.hero p{color:#eee}.button{background:#c6001c;color:white}.button:hover{background:#970013}.note{background:#fff2f3}.intro{color:#444}.toolbar input,.toolbar select{border-color:#b7b7b7}.tablewrap,.card{box-shadow:0 2px 12px #00000008}th{background:#111}tbody tr:nth-child(even){background:#f7f7f7}tbody tr:hover{background:#fff0f1}.timeline{border-color:#d10020}.photo{background:linear-gradient(135deg,#111,#680010);color:white}.empty{border-color:#bbb}footer{background:#090909;color:white;border-top:5px solid #b00017}footer p{color:#ddd}footer a{color:white}.feature-hero,.heritage-hero{background:#090909;border-top:5px solid #c6001c}.feature-copy{background:radial-gradient(circle at 5% 20%,#65000f,transparent 70%),#101010}.feature-copy h2 em{color:white}.feature-copy>p:not(.eyebrow){color:#eee}.feature-photo{background:#111}.archive-strip{background:#111;color:#ddd}.home-timeline{border-top-color:#b00017}.milestone-year{color:#b00017}.home-photo{background:#111}.heritage-image{background:#111}.heritage-copy{background:linear-gradient(140deg,#151515,#47000c)}.photo-card .photo img{background:#111}.view-photo{border-color:#b00017;color:#b00017}.view-photo:hover{background:#b00017;color:white}a:focus-visible,button:focus-visible{outline:3px solid #e22;outline-offset:3px}
+
+/* Historic league tables */
+.standings-context,.standings-key{color:#575757;max-width:850px;font-size:14px}.standings-key{margin-bottom:38px}
+.past-season{margin:0 0 48px;padding-top:28px;border-top:1px solid var(--border)}
+.standings-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:12px}
+.standings-heading h3{font-size:24px;max-width:780px;margin:0}.standings-heading .eyeline{margin-bottom:8px}
+.standings-source{color:var(--wine);font-size:13px;font-weight:700;white-space:nowrap;text-underline-offset:3px}
+.standings-finish{font-size:14px;margin:14px 0 18px;color:#4b4b4b}
+.standings-division{font:700 16px/1.4 system-ui,sans-serif;margin:0 0 6px}.standings-division span{font-weight:600}
+.standings-scroll{overflow-x:auto;border:1px solid #202020;background:#323232}
+.standings-scroll:focus-visible{outline:3px solid var(--wine);outline-offset:4px}
+.standings-table{border-collapse:collapse;min-width:760px;width:100%;font:14px/1.4 Arial,sans-serif;color:#f2f2f2}
+.standings-table th,.standings-table td{border:1px solid #242424;padding:12px 10px;text-align:center;font-variant-numeric:tabular-nums}
+.standings-table thead th{background:#232323;color:#ededed;font-weight:700;letter-spacing:0;text-transform:none}
+.standings-table tbody tr,.standings-table tbody tr:nth-child(even){background:#323232}
+.standings-table tbody tr:hover{background:#3b3b3b}
+.standings-table tbody th{background:transparent;color:#aaa3ff;font-size:14px;letter-spacing:0;text-transform:none;font-weight:700}
+.standings-table .standings-team{text-align:left;width:52%;min-width:260px;overflow-wrap:anywhere}
+.standings-table thead .standings-team{text-align:center}
+.standings-table .standings-kit{width:54px;min-width:54px;padding:10px 12px}
+.standings-shirt{display:block;width:30px;height:32px;margin:auto}
+.standings-table tbody .standings-sizzle{background:#3c2c2e}
+.standings-table tbody .standings-sizzle:hover{background:#483336}
+.standings-table .standings-sizzle td,.standings-table .standings-sizzle th{font-weight:700;border-top-color:#84505a;border-bottom-color:#84505a}
+.standings-table .standings-sizzle .standings-kit{box-shadow:inset 4px 0 #d71936}
+.standings-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+@media(max-width:700px){.standings-heading{flex-direction:column;gap:12px}.standings-heading h3{font-size:21px}.past-season{margin-bottom:34px}.standings-table th,.standings-table td{padding:11px 8px}}
