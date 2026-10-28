@@ -2,7 +2,7 @@
 
 A complete, responsive, static GitHub Pages starter website for Plastic Sizzle (founded 1998). Colours: dark red, black, white, with a heritage-inspired gold accent.
 
-**IMPORTANT:** All player records, match results, league standings, honours, sample memories and non-founding timeline events are **fictional demonstration data**. The club name, colours and founding year were supplied by the requester. The thistle graphic is a simple temporary emblem, not an official club crest.
+**IMPORTANT:** All player records, match results, sample memories and non-founding timeline events are **fictional demonstration data**. The club name, colours and founding year were supplied by the requester. The thistle graphic is a simple temporary emblem, not an official club crest.
 
 ## Publish for free using GitHub Pages
 

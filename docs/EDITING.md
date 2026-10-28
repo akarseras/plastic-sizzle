@@ -2,7 +2,7 @@
 
 ## Recommended workflow
 
-1. Keep one master spreadsheet workbook with tabs named Seasons, Players, Matches, Honours, Timeline, Photos, and Memories.
+1. Keep one master spreadsheet workbook with tabs named Players, Matches, Timeline, Photos, and Memories.
 2. Export each tab separately as **CSV UTF-8**, using the exact filenames in `/data`.
 3. Keep the existing header row and column names unchanged. Replace fictional demonstration records with verified club information.
 4. Upload changed CSV files to the GitHub repository under `data/`, preserving names. GitHub Pages will deploy the changes.
@@ -10,10 +10,8 @@
 
 ## Files and columns
 
-- `seasons.csv`: season, competition, position, played, won, drawn, lost, points, notes
 - `players.csv`: name, position, seasons, appearances, goals, notes
 - `matches.csv`: date, season, opponent, venue, goals_for, goals_against, competition, notes (reserved for a future match results page)
-- `honours.csv`: year, competition, achievement, notes
 - `timeline.csv`: year, title, description
 - `photos.csv`: year, title, filename, alt, caption, credit
 - `memories.csv`: year, title, story, contributor
@@ -42,7 +40,7 @@
 
 ## First-release caveat
 
-The match CSV is not yet displayed on the site. The Seasons page shows aggregated seasonal statistics, not individual match scores.
+The match CSV is not yet displayed on the site.
 
 
 ## Photo gallery: people pictured
