@@ -41,7 +41,7 @@ See [docs/EDITING.md](docs/EDITING.md). Edit the CSV files in `data/` using Exce
 - This starter uses no third-party scripts, analytics, fonts, or paid services.
 
 ## Official club badge
-The header displays `assets/plastic-sizzle-badge.png`, supplied by the club. To replace it, overwrite that file with another PNG of the same name.
+The header displays `assets/photos/plastic-sizzle-badge.png`, supplied by the club. To replace it, overwrite that file with another PNG of the same name.
 
 
 ## Version 3: official photo archive and homepage

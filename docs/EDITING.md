@@ -48,3 +48,5 @@ The match CSV is not yet displayed on the site.
 Edit `data/photos.csv` in Excel or Google Sheets. The `names` column contains the names shown under each photo and in the full-size viewer. Separate names with semicolons (for example: `Back row: Alex; Sam; Jordan. Front row: Pat; Chris`). For commas inside a cell, export as standard CSV with the cell quoted. Leave the field empty until identities are confirmed.
 
 The `filename` column refers to a file inside `assets/photos/`. Photograph dates are provisional until verified.
+
+Photo filenames use lowercase letters, numbers and hyphens, with lowercase extensions (.jpg, .png or .webp). Use descriptive names for venues and pubs (e.g. oz-dome.png or pattys-pub.jpg) and team-YYYY-MM or team-YYYY-MM-DD for dated team photos. Preserve the original image format; use .jpg for JPEG files.

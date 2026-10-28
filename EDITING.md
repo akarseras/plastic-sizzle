@@ -46,3 +46,5 @@ The match CSV is not yet displayed on the site.
 ### Version 3 photos and timeline
 
 Both supplied photographs are already installed in `assets/photos/`. Edit `data/photos.csv` to change their captions, dates or credits. Edit `data/timeline.csv` to add verified milestones. Keep CSV column headings unchanged and save as UTF-8 CSV. The homepage automatically displays the timeline entries and currently features the 2003 image.
+
+Photo filenames use lowercase letters, numbers and hyphens, with lowercase extensions (.jpg, .png or .webp). Use descriptive names for venues and pubs (e.g. oz-dome.png or pattys-pub.jpg) and team-YYYY-MM or team-YYYY-MM-DD for dated team photos. Preserve the original image format; use .jpg for JPEG files.
