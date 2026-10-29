@@ -48,7 +48,13 @@ function pastStandings(){
     }).join('');
 }
 
-const routes={home,history,players,gallery,memories,stadia,'post-match':postMatch,honours,'past-standings':pastStandings};
+
+function inMemoriam(){
+  return section('In Memoriam','Remembering those who shared the shirt.')
+    +'<article class="memorial-card" aria-labelledby="jason-molyneux"><img class="memorial-badge" src="assets/photos/plastic-sizzle-badge.png" alt="" width="80" height="80"><p class="eyeline">In memory of</p><h3 id="jason-molyneux">Jason Molyneux</h3><div class="memorial-rule" aria-hidden="true"></div><p>Jason was part of the Plastic Sizzle team and remains part of our club’s story.</p><p>This page honours his memory and the time we shared on the pitch.</p><a href="#gallery">Remembering Jason in the photo archive →</a></article>';
+}
+
+const routes={home,history,players,gallery,memories,stadia,'post-match':postMatch,honours,'past-standings':pastStandings,'in-memoriam':inMemoriam};
 function render(){const view=location.hash.slice(1).split('?')[0]||'home';if(view!==state.view)state.query='';state.view=routes[view]?view:'home';app.innerHTML=routes[state.view]();document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.dataset.view===state.view));app.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>openPhoto(Number(b.dataset.photo))));const search=document.getElementById('search');if(search){search.addEventListener('input',()=>{const pos=search.selectionStart;state.query=search.value;const container=search.parentElement.nextElementSibling;const records=all(state.view).filter(r=>Object.values(r).join(' ').toLowerCase().includes(state.query.toLowerCase()));const columns=[['name','Player'],['position','Position'],['seasons','Seasons'],['current squad','Current squad'],['notes','Notes']];container.outerHTML=table(records,columns);});}window.scrollTo(0,0);}
 async function init(){try{await Promise.all(files.map(async n=>{const res=await fetch(`data/${n}.csv`);if(!res.ok)throw new Error(n+' CSV not found');state.data[n]=csvParse(await res.text());}));document.getElementById('updated').textContent='Built for the community';render();window.addEventListener('hashchange',render);}catch(err){app.innerHTML=`<h2>Archive could not load</h2><p>${e(err.message)}</p><p>Open the website through a local web server or GitHub Pages, not directly using a file:// URL. See README.md.</p>`;}}
 init();

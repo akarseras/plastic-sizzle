@@ -36,3 +36,11 @@
 .standings-table .standings-sizzle .standings-kit{box-shadow:inset 4px 0 #d71936}
 .standings-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 @media(max-width:700px){.standings-heading{flex-direction:column;gap:12px}.standings-heading h3{font-size:21px}.past-season{margin-bottom:34px}.standings-table th,.standings-table td{padding:11px 8px}}
+
+/* In Memoriam */
+.memorial-card{max-width:760px;margin:36px auto 0;padding:clamp(28px,5vw,56px);background:var(--paper);border:1px solid var(--border);border-top:3px solid var(--wine);text-align:center}
+.memorial-badge{display:block;width:80px;height:80px;object-fit:contain;margin:0 auto 26px}
+.memorial-card h3{font-size:clamp(32px,5vw,46px);margin:0}
+.memorial-rule{width:50px;height:2px;background:var(--wine);margin:24px auto}
+.memorial-card p:not(.eyeline){max-width:540px;margin:16px auto;color:var(--muted);font-size:18px}
+.memorial-card>a{display:inline-block;max-width:100%;margin-top:20px;color:var(--wine);font-weight:700;text-underline-offset:4px}
