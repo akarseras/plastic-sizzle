@@ -50,7 +50,7 @@ function pastStandings(){
 
 function inMemoriam(){
   return section('In Memoriam','Remembering those who shared the shirt.')
-    +'<article class="memorial-card" aria-labelledby="jason-molyneux"><img class="memorial-badge" src="assets/photos/plastic-sizzle-badge.png" alt="" width="80" height="80"><p class="eyeline">In memory of</p><h3 id="jason-molyneux">Jason Molyneux</h3><div class="memorial-rule" aria-hidden="true"></div><p>Jason was part of the Plastic Sizzle team and remains part of our club’s story.</p><p>This page honours his memory and the time we shared on the pitch.</p><a href="#gallery">Remembering Jason in the photo archive →</a></article>';
+    +'<article class="memorial-card" aria-labelledby="jason-molyneux"><img class="memorial-badge" src="assets/photos/plastic-sizzle-badge.png" alt="" width="80" height="80"><p class="eyeline">In memory of</p><h3 id="jason-molyneux">Jason Molyneux</h3><div class="memorial-rule" aria-hidden="true"></div><p>Jason was part of the Plastic Sizzle team and remains part of our club’s story.</p><p>This page honours his memory and the time we shared on the pitch.</p></article>';
 }
 
 
