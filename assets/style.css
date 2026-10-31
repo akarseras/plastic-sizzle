@@ -86,3 +86,6 @@
 
 /* Align full-size photo actions across each gallery row. */
 .photo-card:has(> .photo-open){display:flex;flex-direction:column}.photo-card>.photo-open{flex:none}.photo-card:has(> .photo-open)>.details{display:flex;flex:1;flex-direction:column;align-items:flex-start}.photo-card:has(> .photo-open)>.details>.photo-names{width:100%}.photo-card:has(> .photo-open) .view-photo{margin-top:auto}
+
+/* Keep the full portrait kit photograph visible in its gallery thumbnail. */
+.photo-card .photo-open img[src$="/dec-saka.png"]{object-fit:contain;background:var(--cream)}
