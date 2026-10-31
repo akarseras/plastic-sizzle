@@ -83,3 +83,6 @@
 
 /* Player lists stay hidden until their disclosure is opened. */
 .photo-names{margin:14px 0 18px;white-space:normal}.photo-names summary{display:flex;align-items:center;gap:10px;width:fit-content;cursor:pointer;list-style:none}.photo-names summary::-webkit-details-marker{display:none}.photo-names summary:focus-visible{outline:3px solid var(--wine);outline-offset:4px}.photo-names-toggle{position:relative;display:inline-block;width:22px;height:22px;flex:none;border:1px solid currentColor;border-radius:50%;color:var(--wine)}.photo-names-toggle::before,.photo-names-toggle::after{content:"";position:absolute;top:50%;left:50%;width:10px;height:2px;background:currentColor;transform:translate(-50%,-50%)}.photo-names-toggle::after{transform:translate(-50%,-50%) rotate(90deg)}.photo-names[open] .photo-names-toggle::after{display:none}.photo-names>p{margin:12px 0 0;white-space:pre-line}.lightbox-caption .photo-names-toggle{color:white}
+
+/* Align full-size photo actions across each gallery row. */
+.photo-card:has(> .photo-open){display:flex;flex-direction:column}.photo-card>.photo-open{flex:none}.photo-card:has(> .photo-open)>.details{display:flex;flex:1;flex-direction:column;align-items:flex-start}.photo-card:has(> .photo-open)>.details>.photo-names{width:100%}.photo-card:has(> .photo-open) .view-photo{margin-top:auto}
